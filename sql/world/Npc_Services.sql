@@ -10,4 +10,4 @@ INSERT INTO `creature_template` (`entry`, `modelid1`, `name`, `subname`, `minlev
 
 DELETE FROM `creature_template_locale` WHERE (`entry`=190013);
 INSERT INTO `creature_template_locale` VALUES
-(90000, 'ruRU', 'Двуликий', 'Тысяча мелочей', '13000');
+(190013, 'ruRU', 'Двуликий', 'Тысяча мелочей', '13000');
