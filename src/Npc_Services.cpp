@@ -16,16 +16,16 @@ public:
 
         bool OnGossipHello(Player *player, Creature *creature)
         {
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\Spell_Nature_Regenerate:40:40:-18|t Restore HP and MP", GOSSIP_SENDER_MAIN, 1);			// Restore Health and Mana
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Reset Instances", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\SPELL_HOLY_BORROWEDTIME:40:40:-18|t Reset Cooldowns", GOSSIP_SENDER_MAIN, 3);				// Reset Cooldowns
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_BG_AB_defendflags:40:40:-18|t Reset Combat", GOSSIP_SENDER_MAIN, 4);			// Leave Combat
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\Spell_Shadow_DeathScream:40:40:-18|t Remove Sickness", GOSSIP_SENDER_MAIN, 5);		    // Remove Sickness
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\INV_Hammer_24:40:40:-18|t Repair Items", GOSSIP_SENDER_MAIN, 6);							// Repair Items
-		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_WorldEvent_Lunar:40:40:-18|t Reset Talents", GOSSIP_SENDER_MAIN, 7);			// Reset Talents
-		AddGossipItemFor(player, 10, "|TInterface/Icons/INV_Misc_Bag_07:40:40:-18|t Bank", GOSSIP_SENDER_MAIN, 8);                                   // Open Bank
-		AddGossipItemFor(player, 10, "|TInterface/Icons/INV_Letter_11:40:40:-18|t Mail", GOSSIP_SENDER_MAIN, 9);                                     // Open Mailbox
-        AddGossipItemFor(player, 10, "|TInterface/Icons/achievement_general:40:40:-18|t Learn Dual Talents", GOSSIP_SENDER_MAIN, 10);                // Learn Dualspec
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\Spell_Nature_Regenerate:40:40:-18|t Восстановить здоровье и ману", GOSSIP_SENDER_MAIN, 1);			// Restore Health and Mana
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_BG_winAB_underXminutes:40:40:-18|t Обновить подземелья", GOSSIP_SENDER_MAIN, 2);	// Reset Instances
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\SPELL_HOLY_BORROWEDTIME:40:40:-18|t Выполнить перезарядку умений", GOSSIP_SENDER_MAIN, 3);				// Reset Cooldowns
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_BG_AB_defendflags:40:40:-18|t Выйти из боя", GOSSIP_SENDER_MAIN, 4);			// Leave Combat
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\Spell_Shadow_DeathScream:40:40:-18|t Удалить дебаф слабости", GOSSIP_SENDER_MAIN, 5);		    // Remove Sickness
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\INV_Hammer_24:40:40:-18|t Починить все предметы", GOSSIP_SENDER_MAIN, 6);							// Repair Items
+		AddGossipItemFor(player, 10, "|TInterface\\icons\\Achievement_WorldEvent_Lunar:40:40:-18|t Сбросить таланты", GOSSIP_SENDER_MAIN, 7);			// Reset Talents
+		AddGossipItemFor(player, 10, "|TInterface/Icons/INV_Misc_Bag_07:40:40:-18|t Банк", GOSSIP_SENDER_MAIN, 8);                                   // Open Bank
+		AddGossipItemFor(player, 10, "|TInterface/Icons/INV_Letter_11:40:40:-18|t Почта", GOSSIP_SENDER_MAIN, 9);                                     // Open Mailbox
+        AddGossipItemFor(player, 10, "|TInterface/Icons/achievement_general:40:40:-18|t Получить двойную специализацию", GOSSIP_SENDER_MAIN, 10);                // Learn Dualspec
 
 		SendGossipMenuFor(player, 1, creature->GetGUID());
         return true;
@@ -48,7 +48,7 @@ public:
 						player->SetPower(POWER_MANA, player->GetMaxPower(POWER_MANA));
 
 				player->SetHealth(player->GetMaxHealth());
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFHP & MP succesfully restored!");
+				player->GetSession()->SendNotification("|cffFFFF00Elgracia \n |cffFFFFFFЗдоровье и мана востановлены!");
 				player->CastSpell(player, 31726);
 				break;
 
@@ -69,7 +69,7 @@ public:
                     }
 				}
 
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFInstances succesfully reseted!");
+				player->GetSession()->SendNotification("|cffFFFF00Elgracia \n |cffFFFFFFПодземелья обновлены!");
 				player->CastSpell(player, 59908);
                 return true;
 				break;
@@ -84,14 +84,14 @@ public:
 				}
 
 				player->RemoveAllSpellCooldown();
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFCooldowns succesfully reseted!");
+				player->GetSession()->SendNotification("|cffFFFF00Elgracia \n |cffFFFFFFПерезарядка умений завершена!");
 				player->CastSpell(player, 31726);
 				break;
 
 		case 4: // Leave Combat
 				CloseGossipMenuFor(player);
 				player->CombatStop();
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFCombat succesfully removed!");
+				player->GetSession()->SendNotification("|cffFFFF00Elgracia \n |cffFFFFFFПерсонаж вышел из боя!");
 				player->CastSpell(player, 31726);
 				break;
 
@@ -99,14 +99,14 @@ public:
 				CloseGossipMenuFor(player);
 				if(player->HasAura(15007))
 				player->RemoveAura(15007);
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFSickness succesfully removed!");
+				player->GetSession()->SendNotification("|cffFFFF00Elgracia \n |cffFFFFFFДебаф слабости удалён!");
 				player->CastSpell(player, 31726);
 				break;
 
 		case 6: // Repair Items
 				CloseGossipMenuFor(player);
 				player->DurabilityRepairAll(false, 0, false);
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFItems repaired succesfully!");
+				player->GetSession()->SendNotification("|cffFFFF00Elgracia \n |cffFFFFFFВсе предметы починены!");
 				player->CastSpell(player, 31726);
 				break;
 
@@ -114,7 +114,7 @@ public:
 				CloseGossipMenuFor(player);
 				player->resetTalents(true);
 				player->SendTalentsInfoData(false);
-				player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFTalents reseted succesfully!");
+				player->GetSession()->SendNotification("|cffFFFF00Elgracia \n |cffFFFFFFВсе таланты сброшены!");
 				player->CastSpell(player, 31726);
 				break;
 
@@ -133,7 +133,7 @@ public:
 				if (player->IsInCombat())
 				{
 				CloseGossipMenuFor(player);
-				player->GetSession()->SendNotification("You are in combat!");
+				player->GetSession()->SendNotification("Вы находитесь в бою!");
 				return false;
 				}
 
@@ -142,7 +142,7 @@ public:
                                 player->CastSpell(player, 63624);
                                 player->learnSpell(63645);
                                 player->UpdateSpecCount(2);
-                                player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFDual Talents Learned Succesfully!");
+                                player->GetSession()->SendNotification("|cffFFFF00NPC SERVICES \n |cffFFFFFFДвойная специализация получена!");
 				return true;
 				break;
 
